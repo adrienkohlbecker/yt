@@ -1,0 +1,11 @@
+*.m4a
+*.webm
+*.opus
+*.ogg
+
+key.go
+dled.txt
+fails.txt
+todl.txt
+playlist.xlsx
+thumbsup.*
