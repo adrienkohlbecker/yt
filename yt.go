@@ -96,9 +96,13 @@ func readFile(fileName string, res chan string, wg *sync.WaitGroup) {
 
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		log.Print(scanner.Text())
+		text := scanner.Text()
+		if text == "" {
+			continue
+		}
+		log.Print(text)
 		wg.Add(1)
-		res <- scanner.Text()
+		res <- text
 	}
 
 	if err := scanner.Err(); err != nil {
