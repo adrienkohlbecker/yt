@@ -15,7 +15,7 @@ import (
 	"github.com/google/google-api-go-client/googleapi/transport"
 )
 
-const parallelism = 4
+const parallelism = 5
 const maxResults = 20
 const skipNFirst = 0
 
