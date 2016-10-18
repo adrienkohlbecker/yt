@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
+	"strings"
 	"sync"
 
 	"google.golang.org/api/youtube/v3"
@@ -98,6 +99,9 @@ func readFile(fileName string, res chan string, wg *sync.WaitGroup) {
 	for scanner.Scan() {
 		text := scanner.Text()
 		if text == "" {
+			continue
+		}
+		if strings.HasPrefix(text, "#") {
 			continue
 		}
 		log.Print(text)
