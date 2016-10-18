@@ -105,7 +105,8 @@ func readFile(fileName string, res chan string, wg *sync.WaitGroup) {
 		res <- text
 	}
 
-	if err := scanner.Err(); err != nil {
+	err = scanner.Err()
+	if err != nil {
 		log.Fatal(err)
 	}
 
@@ -185,7 +186,8 @@ func makeIndex(filename string, index *map[string]bool) {
 		(*index)[scanner.Text()] = true
 	}
 
-	if err := scanner.Err(); err != nil {
+	err = scanner.Err()
+	if err != nil {
 		log.Fatal(err)
 	}
 
