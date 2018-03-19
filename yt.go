@@ -35,12 +35,12 @@ func main() {
 	}
 
 	index := make(map[string]bool)
-	makeIndex("/Users/adrien/Desktop/yt/dled.txt", &index)
+	makeIndex("/Users/ak/Desktop/yt/dled.txt", &index)
 
 	fails := make(map[string]bool)
-	makeIndex("/Users/adrien/Desktop/yt/fails.txt", &fails)
+	makeIndex("/Users/ak/Desktop/yt/fails.txt", &fails)
 
-	dled, err := os.OpenFile("/Users/adrien/Desktop/yt/dled.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
+	dled, err := os.OpenFile("/Users/ak/Desktop/yt/dled.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0600)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -75,7 +75,7 @@ func main() {
 		}
 	}()
 
-	readFile("/Users/adrien/Desktop/yt/todl.txt", queryChan, queryWg)
+	readFile("/Users/ak/Desktop/yt/todl.txt", queryChan, queryWg)
 	close(queryChan)
 
 	queryWg.Wait()
