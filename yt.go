@@ -149,7 +149,9 @@ func download(id string, wg *sync.WaitGroup, spots chan bool, dled *os.File, ind
 	if !fails[id] && !index[id] {
 
 		url := fmt.Sprintf("https://www.youtube.com/watch?v=%s", id)
-		out, err := exec.Command("nice", "--adjustment", "20", "youtube-dl", "-f", "bestaudio", "-x", "--audio-format", "m4a", "--postprocessor-args", "-strict experimental", url).Output()
+		cmd := exec.Command("nice", "--adjustment", "20", "youtube-dl", "-f", "bestaudio", "-x", "--audio-format", "m4a", "--postprocessor-args", "-strict experimental", url)
+		cmd.Dir = "/Users/ak/Desktop"
+		out, err := cmd.Output()
 		if err != nil {
 			log.Printf("youtube-dl has failed: %s\n%s\n%s", url, string(out), err)
 		}
